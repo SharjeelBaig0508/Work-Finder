@@ -28,14 +28,13 @@ app.use(BASE_URL + '/users', require('./routes/users'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  res.status(404).send({ response_code: 404, response_message: "API End Point not Found" });
+  res.status(404).json({ response_code: 404, response_message: "API End Point not Found" });
   next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.status(500).send({ response_code: 500, response_message: "Something Went Wrong!" });
   console.log(err)
 });
 
