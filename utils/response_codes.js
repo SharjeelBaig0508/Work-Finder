@@ -1,0 +1,28 @@
+/* This file will be used to store all the Response Messages of API */
+
+module.exports = {
+  // CODES BLOCK
+  // - SUCCES BLOCK - 200
+  CODE_RESPONSE_SUCCESS: 200,
+  CODE_RESPONSE_CREATION_SUCCESS: 201,
+  
+
+  // - REDIRECTION BLOCK - 300
+
+  // - CLIENT ERRORS BLOCK - 400
+  CODE_BAD_REQUEST: 400,
+
+  // - SERVER ERRORS BLOCK - 500
+  CODE_INTERNAL_SERVER_ERROR: 500,
+
+  // MESSAGES BLOCK
+  // - SUCCESS BLOCK
+  MESSAGE_RESPONSE_SUCCESS: "Successful Response",
+  MESSAGE_RESPONSE_CREATION_SUCCESS: "Record successfully inserted",
+
+  // - CLIENT ERRORS BLOCK
+  MESSAGE_RESPONSE_BAD_REQUEST: "Bad Request",
+
+  // - SERVER ERRORS BLOCK
+  MESSAGE_RESPONSE_INTERNAL_SERVER_ERROR: "Something Went Wrong",
+};

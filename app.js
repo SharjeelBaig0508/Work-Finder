@@ -22,9 +22,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-BASE_URL = "api/v1"
+BASE_URL = "/api/v1"
 app.use('/', require('./routes/index'));
 app.use(BASE_URL + '/users', require('./routes/users'));
+app.use(BASE_URL + '/our-teams', require('./routes/our_teams'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
