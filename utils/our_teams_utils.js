@@ -1,5 +1,7 @@
 /* Node Imports */
 
+const common_utils = require("./common_utils");
+
 /* Framework Imports */
 
 /* Local Imports */
@@ -21,6 +23,9 @@ function filter_multiple_our_teams_object(our_teams){
 
 
 function filter_our_teams_object(our_team){
+    if (!our_team){
+        return {}
+    }
     return {
         id: our_team._id,
         name: our_team.name,

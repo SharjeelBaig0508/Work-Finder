@@ -12,26 +12,46 @@ const response_codes = require('../utils/response_codes');
 
 
 /* GET: all teams. */
-router.get('/', (req, res, next) => {
-    // Send all teams from database with limited fields
-    const { our_teams, response_code, response_message } = our_teams_controller.read_teams_controller(req.body);
+const get_all_teams = async (req, res, next) => {
+    const [ our_team, response_code, response_message ] = await our_teams_controller.read_teams_controller({});
     if (response_code != response_codes.CODE_RESPONSE_SUCCESS) {
-        res.send(common_utils.response_generator(
+        return res.send(common_utils.response_generator(
             response_code, 
             response_message
         ));
     }
-    res.send(common_utils.response_generator(
-        response_code, 
-        response_message, 
-        response_data={our_teams: our_teams}
-    ));
+    return res.send(common_utils.response_generator(
+            response_code, 
+            response_message, 
+            response_data={our_teams: our_team}
+            ));
+}
+
+router.get('/', async (req, res, next) => {
+    // Send all teams from database with limited fields
+    await common_utils.api_error_handler(req, res, next, get_all_teams);
 });
 
 
 /* GET: single team in detail. */
-router.get('/:id', (req, res, next) => {
+const get_single_team = async (req, res, next) => {
+    const [ our_team, response_code, response_message ] = await our_teams_controller.read_teams_controller(req.params);
+    if (response_code != response_codes.CODE_RESPONSE_SUCCESS) {
+        return res.send(common_utils.response_generator(
+            response_code, 
+            response_message
+        ));
+    }
+    return res.send(common_utils.response_generator(
+            response_code, 
+            response_message, 
+            response_data={our_teams: our_team}
+            ));
+}
+
+router.get('/:id', async (req, res, next) => {
     // Send team from database with all required fields
+    await common_utils.api_error_handler(req, res, next, get_single_team);
 });
 
 
